@@ -34,7 +34,7 @@ func newSozlukServer(t *testing.T) *httptest.Server {
 }
 
 func TestGetAra(t *testing.T) {
-	search := "kitappp"
+	search := "kitap"
 	s := newSozlukServer(t)
 	defer s.Close()
 
