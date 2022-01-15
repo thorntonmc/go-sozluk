@@ -61,8 +61,6 @@ func (c *Client) Debugf(format string, v ...interface{}) {
 func (c *Client) Get(path string, values url.Values, response interface{}) error {
 	req, err := http.NewRequest(http.MethodGet, c.endpoint+path, nil)
 
-	log.Printf("this is my endpoint %v", c.endpoint+path)
-
 	if err != nil {
 		return err
 	}
@@ -82,6 +80,10 @@ func (c *Client) Get(path string, values url.Values, response interface{}) error
 	}
 
 	err = json.Unmarshal(respTxt, response)
+
+	if err != nil {
+		return err
+	}
 
 	return nil
 }
