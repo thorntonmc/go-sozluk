@@ -3,7 +3,7 @@ go library for the sozluk dictionary
 
 ## usage
 
-```
+```go
 	c := s.NewClient()
 
 	k, err := c.Ara("yer")
