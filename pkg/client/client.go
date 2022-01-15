@@ -73,6 +73,8 @@ func (c *Client) Get(path string, values url.Values, response interface{}) error
 		return err
 	}
 
+	defer resp.Body.Close()
+
 	respTxt, err := io.ReadAll(resp.Body)
 
 	if err != nil {
