@@ -10,7 +10,6 @@ const (
 )
 
 func (c *Client) Ara(s string) (Kelime, error) {
-
 	v := make(url.Values)
 	k := &Kelime{}
 

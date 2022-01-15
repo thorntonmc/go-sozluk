@@ -34,6 +34,7 @@ func newSozlukServer(t *testing.T) *httptest.Server {
 }
 
 func TestGetAra(t *testing.T) {
+	search := "kitappp"
 	s := newSozlukServer(t)
 	defer s.Close()
 
@@ -44,8 +45,8 @@ func TestGetAra(t *testing.T) {
 		s.URL,
 	}
 
-	k, e := c.Ara("kitap")
+	k, e := c.Ara(search)
 
 	assert.NoError(t, e)
-	assert.Equal(t, k.Madde, "kitap")
+	assert.Equal(t, k.Madde, search)
 }
