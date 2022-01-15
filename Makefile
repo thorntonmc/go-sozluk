@@ -1,2 +1,4 @@
+.SILENT:
+
 test: 
-	go test ./...
+	go test ./... -cover
