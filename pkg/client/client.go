@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	sozlukEndpoint = "sozluk.gov.tr"
+	sozlukEndpoint = "https://sozluk.gov.tr"
 )
 
 type httpClient interface {
