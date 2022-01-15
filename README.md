@@ -4,17 +4,16 @@ go library for the sozluk dictionary
 ## usage
 
 ```go
-	c := s.NewClient()
+c := s.NewClient()
+k, err := c.Ara("yer")
 
-	k, err := c.Ara("yer")
+if err != nil {
+	log.Fatalln(err)
+}
 
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	for _, v := range k {
-		fmt.Printf("madde: %v\nBirlesikler: %v\n", v.Madde, v.Birlesikler)
-	}
+for _, v := range k {
+	fmt.Printf("madde: %v\nBirlesikler: %v\n", v.Madde, v.Birlesikler)
+}
 
 ```
 
