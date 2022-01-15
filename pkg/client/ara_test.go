@@ -39,7 +39,7 @@ func TestGetAra(t *testing.T) {
 		&http.Client{},
 		logrus.Logger{},
 		false,
-		sozlukEndpoint,
+		s.URL,
 	}
 
 	k, e := c.Ara(search)
