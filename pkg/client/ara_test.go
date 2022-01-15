@@ -17,7 +17,11 @@ var kitapKelime = Kelime{
 
 func newSozlukServer(t *testing.T) *httptest.Server {
 	t.Helper()
-	respWri, err := json.Marshal(kitapKelime)
+	kitapKelimeResp := &KelimeResponse{
+		Kelimeler: []Kelime{kitapKelime},
+	}
+
+	respWri, err := json.Marshal(kitapKelimeResp)
 
 	assert.NoError(t, err)
 
@@ -48,5 +52,5 @@ func TestGetAra(t *testing.T) {
 	k, e := c.Ara(search)
 
 	assert.NoError(t, e)
-	assert.Equal(t, k.Madde, search)
+	assert.Equal(t, k.Kelimeler[0].Madde, search)
 }

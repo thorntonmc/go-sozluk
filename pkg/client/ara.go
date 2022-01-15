@@ -9,9 +9,9 @@ const (
 	araKey = "ara"
 )
 
-func (c *Client) Ara(s string) (Kelime, error) {
+func (c *Client) Ara(s string) (KelimeResponse, error) {
 	v := make(url.Values)
-	k := &Kelime{}
+	k := &KelimeResponse{}
 
 	v.Set(araKey, s)
 
