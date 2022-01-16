@@ -1,5 +1,5 @@
-# go-sozluk
-go library for the [sozluk dictionary](https://sozluk.gov.tr/)
+# go-sözlük
+go library for the [sözlük dictionary](https://sozluk.gov.tr/)
 
 ## usage
 
