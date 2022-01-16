@@ -1,5 +1,5 @@
 # go-sözlük
-go library for the [sözlük dictionary](https://sozluk.gov.tr/)
+go library for the [sözlük of the Turkish Republic](https://sozluk.gov.tr/)
 
 ## usage
 
