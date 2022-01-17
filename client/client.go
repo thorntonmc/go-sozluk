@@ -58,7 +58,7 @@ func (c *Client) Debugf(format string, v ...interface{}) {
 	}
 }
 
-func (c *Client) Get(path string, values url.Values, response interface{}) error {
+func (c *Client) get(path string, values url.Values, response interface{}) error {
 	req, err := http.NewRequest(http.MethodGet, c.endpoint+path, nil)
 
 	if err != nil {

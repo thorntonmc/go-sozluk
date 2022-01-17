@@ -9,14 +9,14 @@ const (
 	araKey = "ara"
 )
 
-// Ara returns a slice of Kelimelar/Kelimes for a given search  
+// Ara returns a slice of Kelimelar/Kelimes for a given search
 func (c *Client) Ara(s string) ([]Kelime, error) {
 	v := make(url.Values)
 	k := &[]Kelime{}
 
 	v.Set(araKey, s)
 
-	err := c.Get(path, v, k)
+	err := c.get(path, v, k)
 
 	if err != nil {
 		return *k, err
