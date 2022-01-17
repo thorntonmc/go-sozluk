@@ -6,6 +6,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"time"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -36,10 +37,14 @@ func OptionDebug(b bool) func(c *Client) {
 	}
 }
 
+var httpDefaultClient = &http.Client{
+	Timeout: 30 * time.Second,
+}
+
 // NewClient Returns a New Sozluk Client
 func NewClient(options ...Option) *Client {
 	c := &Client{
-		httpClient: &http.Client{},
+		httpClient: httpDefaultClient,
 		Logger:     *log.New(),
 		endpoint:   sozlukEndpoint,
 	}

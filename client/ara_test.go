@@ -36,7 +36,7 @@ func TestGetAra(t *testing.T) {
 	defer s.Close()
 
 	c := &Client{
-		&http.Client{},
+		httpDefaultClient,
 		logrus.Logger{},
 		false,
 		s.URL,
