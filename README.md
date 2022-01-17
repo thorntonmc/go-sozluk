@@ -6,17 +6,22 @@ go library for the [sözlük of the Turkish Republic](https://sozluk.gov.tr/)
 ## usage
 
 ```go
-c := s.NewClient()
-k, err := c.Ara("yer")
+package yours
 
-if err != nil {
-	log.Fatalln(err)
+import "github.com/thorntonmc/go-sozluk/client"
+
+func SearchYer() {
+	c := s.NewClient()
+	k, err := c.Ara("yer")
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	for _, v := range k {
+		fmt.Printf("madde: %v\nBirlesikler: %v\n", v.Madde, v.Birlesikler)
+	}
 }
-
-for _, v := range k {
-	fmt.Printf("madde: %v\nBirlesikler: %v\n", v.Madde, v.Birlesikler)
-}
-
 ```
 
 ## endpoints used
