@@ -1,3 +1,4 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/thorntonmc/go-sozluk)](https://goreportcard.com/report/github.com/thorntonmc/go-sozluk)
 # go-sözlük
 go library for the [sözlük of the Turkish Republic](https://sozluk.gov.tr/)
 
