@@ -1,6 +1,7 @@
 package client
 
 import (
+	"context"
 	"fmt"
 	"net/url"
 )
@@ -24,7 +25,7 @@ func (c *Client) Ara(s string) ([]Kelime, error) {
 
 	v.Set(araKey, s)
 
-	err := c.get(path, v, k)
+	err := c.get(context.Background(), path, v, k)
 
 	if err != nil {
 		return *k, fmt.Errorf("failed to find word: %w", err)

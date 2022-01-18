@@ -1,6 +1,7 @@
 package client
 
 import (
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -64,10 +65,10 @@ func (c *Client) Debugf(format string, v ...interface{}) {
 	}
 }
 
-func (c *Client) get(path string, values url.Values, response interface{}) error {
+func (c *Client) get(ctx context.Context, path string, values url.Values, response interface{}) error {
 	araError := &AraError{}
 
-	req, err := http.NewRequest(http.MethodGet, c.endpoint+path, nil)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, c.endpoint+path, nil)
 
 	if err != nil {
 		return err
