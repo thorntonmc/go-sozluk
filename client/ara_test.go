@@ -6,7 +6,6 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -58,12 +57,7 @@ func TestGetAra(t *testing.T) {
 	s := newSozlukServer(t)
 	defer s.Close()
 
-	c := &Client{
-		httpDefaultClient,
-		logrus.Logger{},
-		false,
-		s.URL,
-	}
+	c := NewClient(OptionDebug(true), OptionEndpoint(s.URL))
 
 	for _, i := range search {
 		k, e := c.Ara(i.str)

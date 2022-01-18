@@ -39,6 +39,13 @@ func OptionDebug(b bool) func(c *Client) {
 	}
 }
 
+// OptionEndpoint overrides the endpoint for the http client
+func OptionEndpoint(e string) func(c *Client) {
+	return func(c *Client) {
+		c.endpoint = e
+	}
+}
+
 var httpDefaultClient = &http.Client{
 	Timeout: 30 * time.Second,
 }
@@ -76,6 +83,7 @@ func (c *Client) get(ctx context.Context, path string, values url.Values, respon
 
 	req.URL.RawQuery = values.Encode()
 
+	c.Debugf("outbound request to %v", c.endpoint+path)
 	resp, err := c.httpClient.Do(req)
 
 	if err != nil {
