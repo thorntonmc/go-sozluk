@@ -2,6 +2,7 @@ package client
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -64,6 +65,8 @@ func (c *Client) Debugf(format string, v ...interface{}) {
 }
 
 func (c *Client) get(path string, values url.Values, response interface{}) error {
+	araError := &AraError{}
+
 	req, err := http.NewRequest(http.MethodGet, c.endpoint+path, nil)
 
 	if err != nil {
@@ -78,12 +81,25 @@ func (c *Client) get(path string, values url.Values, response interface{}) error
 		return err
 	}
 
+	if resp.StatusCode != http.StatusOK {
+		return errors.New("non 200 response code")
+	}
+
 	defer resp.Body.Close()
 
 	respTxt, err := io.ReadAll(resp.Body)
 
 	if err != nil {
 		return err
+	}
+
+	err = json.Unmarshal(respTxt, araError)
+
+	// We need to successfully unmarshal into the error struct to determine
+	// if there was an issue, such as no results returned, as the sozluk
+	// always returns a response code of 200 if the request was not malformed
+	if err == nil {
+		return errors.New(araError.Err)
 	}
 
 	err = json.Unmarshal(respTxt, response)
