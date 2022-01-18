@@ -71,6 +71,8 @@ func TestGetAra(t *testing.T) {
 			assert.NotEmpty(t, k)
 			assert.NotEmpty(t, k[0])
 			assert.NotEmpty(t, k[0].Madde, "returned word is null")
+			assert.NotEmpty(t, k[0].AnlamlarListe, "first anlam missing")
+			assert.NotEmpty(t, k[0].AnlamlarListe[0].Ornekler, "ornekler not provided for first Anlam")
 			assert.Equal(t, i.expect, k[0].Madde, "did not receive expected word")
 		}
 	}

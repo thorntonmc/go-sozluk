@@ -34,7 +34,7 @@ type Anlam struct {
 	Anlam string `json:"anlam"`
 
 	// Examples represents the list of example sentences for the Anlam
-	Ornekler []Ornekler `json:"ornekListe"`
+	Ornekler []Ornekler `json:"orneklerListe"`
 }
 
 // Ornekler represent the list of examples for an Anlam
